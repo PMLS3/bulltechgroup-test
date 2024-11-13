@@ -1,65 +1,53 @@
-"use client";
+"use client"
 
-import { PieChart, Pie, Cell, Legend } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ChartWrapper, CustomTooltip } from "./ChartWrapper";
+  BarChart,
+  Bar,
+  CartesianGrid,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+} from "recharts"
 
-const data = [
-  { name: "Engineering", value: 45 },
-  { name: "Marketing", value: 25 },
-  { name: "Sales", value: 20 },
-  { name: "Support", value: 10 },
-];
+interface DepartmentChartProps {
+  data: Array<{
+    name: string
+    userCount: number
+    activePercentage: number
+  }>
+}
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
-export function DepartmentChart() {
+export function DepartmentChart({ data }: DepartmentChartProps) {
   return (
-    <Card>
+    <Card className="bg-slate-900 border-slate-800 col-span-3">
       <CardHeader>
-        <CardTitle>Department Distribution</CardTitle>
-        <CardDescription>Employee distribution by department</CardDescription>
+        <CardTitle className="text-sm font-medium text-slate-200">
+          Department Analytics
+        </CardTitle>
       </CardHeader>
-      <CardContent className="h-[300px]">
-        <ChartWrapper data={data}>
-          <PieChart margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              label={({ name, percent }) =>
-                `${name} ${(percent * 100).toFixed(0)}%`
-              }
-              outerRadius={80}
-              fill="#8884d8"
-              dataKey="value"
-              animationBegin={0}
-              animationDuration={1000}
-            >
-              {data.map((_, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
-                  strokeWidth={1}
-                />
-              ))}
-            </Pie>
-            <CustomTooltip />
-            <Legend
-              verticalAlign="bottom"
-              height={36}
-              iconType="circle"
+      <CardContent>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+            <XAxis dataKey="name" stroke="#94a3b8" />
+            <YAxis stroke="#94a3b8" />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: "#1e293b",
+                border: "none",
+                borderRadius: "8px",
+                color: "#f8fafc",
+              }}
             />
-          </PieChart>
-        </ChartWrapper>
+            <Legend />
+            <Bar dataKey="userCount" fill="#818cf8" name="Total Users" />
+            <Bar dataKey="activePercentage" fill="#22c55e" name="Active %" />
+          </BarChart>
+        </ResponsiveContainer>
       </CardContent>
     </Card>
-  );
+  )
 }

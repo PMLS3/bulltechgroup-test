@@ -1,53 +1,67 @@
-"use client";
+"use client"
 
-import { LineChart, Line, Legend } from "recharts";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ChartWrapper, XAxis, YAxis, CustomTooltip, CustomGrid } from "./ChartWrapper";
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+} from "recharts"
 
-const data = [
-  { name: "Mon", users: 120 },
-  { name: "Tue", users: 150 },
-  { name: "Wed", users: 180 },
-  { name: "Thu", users: 190 },
-  { name: "Fri", users: 160 },
-  { name: "Sat", users: 90 },
-  { name: "Sun", users: 85 },
-];
+interface UserActivityChartProps {
+  data: Array<{
+    date: string
+    activeUsers: number
+    newUsers: number
+  }>
+}
 
-export function UserActivityChart() {
+export function UserActivityChart({ data }: UserActivityChartProps) {
   return (
-    <Card className="col-span-full lg:col-span-2">
+    <Card className="bg-slate-900 border-slate-800 col-span-4">
       <CardHeader>
-        <CardTitle>Weekly User Activity</CardTitle>
-        <CardDescription>Number of active users per day</CardDescription>
+        <CardTitle className="text-sm font-medium text-slate-200">
+          User Activity Trends
+        </CardTitle>
       </CardHeader>
-      <CardContent className="h-[300px]">
-        <ChartWrapper data={data}>
-          <LineChart data={data} margin={{ top: 5, right: 30, bottom: 5, left: 20 }}>
-            <CustomGrid />
-            <XAxis dataKey="name" xAxisId="0" />
-            <YAxis yAxisId="0" />
-            <CustomTooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="users"
-              stroke="hsl(var(--chart-1))"
-              strokeWidth={2}
-              dot={{ strokeWidth: 2 }}
-              activeDot={{ r: 6, strokeWidth: 2 }}
-              xAxisId="0"
-              yAxisId="0"
+      <CardContent>
+        <ResponsiveContainer width="100%" height={300}>
+          <AreaChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+            <XAxis dataKey="date" stroke="#94a3b8" />
+            <YAxis stroke="#94a3b8" />
+            <Tooltip
+              contentStyle={{
+                backgroundColor: "#1e293b",
+                border: "none",
+                borderRadius: "8px",
+                color: "#f8fafc",
+              }}
             />
-          </LineChart>
-        </ChartWrapper>
+            <Legend />
+            <Area
+              type="monotone"
+              dataKey="activeUsers"
+              stroke="#818cf8"
+              fill="#818cf8"
+              fillOpacity={0.3}
+              name="Active Users"
+            />
+            <Area
+              type="monotone"
+              dataKey="newUsers"
+              stroke="#22c55e"
+              fill="#22c55e"
+              fillOpacity={0.3}
+              name="New Users"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
       </CardContent>
     </Card>
-  );
+  )
 }
