@@ -39,7 +39,7 @@ Before running this project, make sure you have:
 1. Clone the repository:
 
 ```bash
-git clone [https://github.com/PMLS3/bulltechgroup-test](https://github.com/PMLS3/bulltechgroup-test)
+git clone https://github.com/PMLS3/bulltechgroup-test
 ```
 
 2. Install dependencies:
