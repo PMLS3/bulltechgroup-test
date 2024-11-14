@@ -52,6 +52,36 @@ const analyticsData = {
       status: "Active",
     },
   ],
+  dailyStats: [
+    {
+      date: "2023-11-01",
+      activeUsers: 243,
+      sessionDuration: 45,
+      newSignups: 892,
+      retentionRate: 88.2,
+    },
+    {
+      date: "2023-11-02",
+      activeUsers: 3012,
+      sessionDuration: 66,
+      newSignups: 756,
+      retentionRate: 87.8,
+    },
+    {
+      date: "2023-11-03",
+      activeUsers: 296,
+      sessionDuration: 55,
+      newSignups: 912,
+      retentionRate: 89.1,
+    },
+    {
+      date: "2023-11-04",
+      activeUsers: 3000,
+      sessionDuration: 72,
+      newSignups: 912,
+      retentionRate: 89.1,
+    },
+  ],
 }
 
 export async function GET() {

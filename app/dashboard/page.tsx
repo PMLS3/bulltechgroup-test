@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { LogOut, Users, UserCheck, Building2, Timer } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button, type ButtonProps } from "@/components/ui/button"
 import { checkAuth, logout } from "@/lib/auth"
 import { StatCard } from "./components/StatCard"
 import { UserActivityChart } from "./components/UserActivityChart"
 import { DepartmentChart } from "./components/DepartmentChart"
 import { RecentLogins } from "./components/RecentLogins"
+import { LoginFrequencyChart } from "./components/LoginFrequencyChart"
+import { DailyStatsGrid } from "./components/DailyStatsGrid"
 import type { DashboardData } from "../types/dashboard"
 
 export default function Dashboard() {
@@ -73,7 +75,7 @@ export default function Dashboard() {
         <Button
           variant="outline"
           onClick={handleLogout}
-          className="bg-white hover:bg-gray-100"
+          className="bg-white hover:bg-slate-950 text-slate-950 hover:text-white"
         >
           <LogOut className="mr-2 h-4 w-4" />
           Logout
@@ -120,8 +122,11 @@ export default function Dashboard() {
         <DepartmentChart data={dashboardData.departmentStats} />
       </div>
 
+      <DailyStatsGrid data={dashboardData.dailyStats} />
+
       <div className="grid gap-4 md:grid-cols-2">
         <RecentLogins data={dashboardData.recentLogins} />
+        <LoginFrequencyChart data={dashboardData.loginFrequency} />
       </div>
     </div>
   )
