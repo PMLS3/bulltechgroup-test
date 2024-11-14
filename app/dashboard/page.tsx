@@ -70,7 +70,7 @@ export default function Dashboard() {
     <div className="flex flex-col gap-4 p-4 md:p-10 bg-slate-950 min-h-screen text-slate-50">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-white">
-          User Analytics Dashboard
+          BullTech Analytics Dashboard
         </h1>
         <Button
           variant="outline"
