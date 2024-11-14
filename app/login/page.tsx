@@ -73,15 +73,15 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen">
       {/* Left side - Message Interface */}
-      <div className="hidden w-2/3 bg-gradient-to-br from-purple-50 to-pink-50 p-6 lg:block">
-        {/* ... existing message interface code ... */}
+      <div className="hidden w-2/3  lg:flex items-center justify-center">
+        <img src="/login.png" alt="Login illustration" className=" w-full" />
       </div>
 
       {/* Right side - Login Form */}
-      <div className="flex w-full flex-col items-center justify-center bg-[#0A0A0B] px-6 lg:w-1/3">
+      <div className="flex w-full flex-col items-center justify-center bg-slate-950 px-6 lg:w-1/3">
         <div className="mb-8 flex items-center gap-2">
-          <span className="text-2xl font-bold text-[#7C3AED]">xpulse</span>
-          <Moon className="h-5 w-5 text-yellow-400" />
+          <span className="text-2xl font-bold text-[#84cc16]">BullTech</span>
+          {/* <Moon className="h-5 w-5 text-yellow-400" /> */}
         </div>
 
         <div className="w-full max-w-sm space-y-6">
@@ -137,33 +137,33 @@ export default function LoginPage() {
                   Remember me
                 </label>
               </div>
-              <Link href="#" className="text-sm text-[#7C3AED] hover:underline">
+              <Link href="#" className="text-sm text-[#84cc16] hover:underline">
                 Forgot your password?
               </Link>
             </div>
 
             <Button
               type="submit"
-              className="w-full bg-[#7C3AED] text-white hover:bg-[#6D2AED]"
+              className="w-full bg-[#84cc16] text-white hover:bg-[#65a30d]"
               disabled={isLoading}
             >
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Sign in
             </Button>
 
-            <Button
+            {/* <Button
               type="button"
               variant="outline"
               className="w-full border-gray-700 bg-[#1A1B1E] text-white hover:bg-[#2A2B2E]"
             >
               <img src="/google.svg" alt="Google" className="w-5 h-5 mr-2" />
               Sign in with Google
-            </Button>
+            </Button> */}
           </form>
 
           <div className="text-center text-sm text-white">
             Need an account?{" "}
-            <Link href="#" className="text-[#7C3AED] hover:underline">
+            <Link href="#" className="text-[#84cc16] hover:underline">
               Create an account
             </Link>
           </div>
