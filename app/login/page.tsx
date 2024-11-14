@@ -70,6 +70,14 @@ export default function LoginPage() {
     }
   }
 
+  const handleTestClick = (action: string) => {
+    toast({
+      title: "Test Message",
+      description: `This is only a test. ${action} feature is not implemented.`,
+      variant: "default",
+    })
+  }
+
   return (
     <div className="flex min-h-screen">
       {/* Left side - Message Interface */}
@@ -137,7 +145,14 @@ export default function LoginPage() {
                   Remember me
                 </label>
               </div>
-              <Link href="#" className="text-sm text-[#84cc16] hover:underline">
+              <Link
+                href="#"
+                className="text-sm text-[#84cc16] hover:underline"
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleTestClick("Forgot password")
+                }}
+              >
                 Forgot your password?
               </Link>
             </div>
@@ -163,7 +178,14 @@ export default function LoginPage() {
 
           <div className="text-center text-sm text-white">
             Need an account?{" "}
-            <Link href="#" className="text-[#84cc16] hover:underline">
+            <Link
+              href="#"
+              className="text-[#84cc16] hover:underline"
+              onClick={(e) => {
+                e.preventDefault()
+                handleTestClick("Create account")
+              }}
+            >
               Create an account
             </Link>
           </div>
